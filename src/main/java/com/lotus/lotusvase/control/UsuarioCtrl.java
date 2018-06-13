@@ -22,18 +22,17 @@ import com.lotus.lotusvase.util.CustomErrorType;
 
 @Controller
 @RequestMapping("/v1")
-@ResponseBody
+
 public class UsuarioCtrl {
 
-	
-	
 
 	@Autowired
 	UsuarioService uSer;
 
 	// GET
-	@RequestMapping(value = "/usuarios", method = RequestMethod.GET, headers = "Accept: application/json")
-	public ResponseEntity<List<Usuario>> getUsuarios() {
+	@RequestMapping(value = "/usuarios", method = RequestMethod.GET, 
+			  headers="Accept=application/json") 
+public ResponseEntity<List<Usuario>> getUsuarios() {
 		List<Usuario> usuList = new ArrayList<>();
 		usuList = uSer.findAll();
 		if (usuList.isEmpty()) {
@@ -112,5 +111,7 @@ public class UsuarioCtrl {
 		uSer.deleteById(idUsu);
 		return new ResponseEntity<Usuario>(HttpStatus.OK);
 	}
+	
+
 	
 }
