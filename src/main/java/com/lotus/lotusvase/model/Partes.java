@@ -10,47 +10,51 @@ import javax.persistence.Id;
 import javax.persistence.Table;
 
 @Entity
-@Table(name = "tipoEvaluacion")
-public class TipoEvaluacion implements Serializable {
-	
+@Table(name = "partes")
+public class Partes  implements Serializable{
 	@Id
 	@Column(name = "id")
 	@GeneratedValue(strategy=GenerationType.IDENTITY)
-	private long id;
+	private int id;
 	@Column(name = "nombre")
 	private String nombre;
-	@Column(name = "nomenclatura")
-	private String nomenclatura;
-		
-	public TipoEvaluacion(String nombre, String nomenclatura) {
-		super();
-		this.nombre = nombre;
-		this.nomenclatura = nomenclatura;
-	}
+	@Column(name = "detalle")
+	private  String detalle;
 	
-	public TipoEvaluacion() {
+	public Partes() {
 		super();
 		// TODO Auto-generated constructor stub
 	}
-	public long getId() {
+
+	public Partes(String nombre, String detalle) {
+		super();
+		this.nombre = nombre;
+		this.detalle = detalle;
+	}
+
+	public int getId() {
 		return id;
 	}
-	public void setId(long id) {
+
+	public void setId(int id) {
 		this.id = id;
 	}
+
 	public String getNombre() {
 		return nombre;
 	}
+
 	public void setNombre(String nombre) {
 		this.nombre = nombre;
 	}
-	public String getNomenclatura() {
-		return nomenclatura;
+
+	public String getDetalle() {
+		return detalle;
 	}
-	public void setNomenclatura(String nomenclatura) {
-		this.nomenclatura = nomenclatura;
+
+	public void setDetalle(String detalle) {
+		this.detalle = detalle;
 	}
-	
 	
 
 }
