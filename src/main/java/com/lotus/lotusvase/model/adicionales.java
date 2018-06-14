@@ -1,5 +1,5 @@
 package com.lotus.lotusvase.model;
 
-public class adicionales {
+public class Adicionales {
 
 }
