@@ -21,7 +21,7 @@ public class Evaluacion implements Serializable {
 	@Column(name = "protocolo")
 	private String protocolo;
 	@Column(name = "tipoEnsayo_id")
-	private int tipoEnsayo_id;
+	private Long tipoEnsayo_id;
 	@Column(name = "solicitante")
 	private String solicitante;
 	
@@ -72,12 +72,12 @@ public class Evaluacion implements Serializable {
 	}
 
 
-	public int getTipoEnsayo_id() {
+	public Long getTipoEnsayo_id() {
 		return tipoEnsayo_id;
 	}
 
 
-	public void setTipoEnsayo_id(int tipoEnsayo_id) {
+	public void setTipoEnsayo_id(Long tipoEnsayo_id) {
 		this.tipoEnsayo_id = tipoEnsayo_id;
 	}
 

@@ -10,28 +10,28 @@ import javax.persistence.Table;
 @Table(name="asignaCar")
 public class AsignaCar implements Serializable{
 	@Column(name="etaId")
-	private int etaId;
+	private Long etaId;
 	@Column(name="carId")
-	private int carId;
+	private Long carId;
 
 	public AsignaCar() {
 		super();
 		// TODO Auto-generated constructor stub
 	}
 
-	public int getEtaId() {
+	public Long getEtaId() {
 		return etaId;
 	}
 
-	public void setEtaId(int etaId) {
+	public void setEtaId(Long etaId) {
 		this.etaId = etaId;
 	}
 
-	public int getCarId() {
+	public Long getCarId() {
 		return carId;
 	}
 
-	public void setCarId(int carId) {
+	public void setCarId(Long carId) {
 		this.carId = carId;
 	}
 	

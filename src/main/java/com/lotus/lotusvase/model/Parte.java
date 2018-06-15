@@ -10,33 +10,33 @@ import javax.persistence.Id;
 import javax.persistence.Table;
 
 @Entity
-@Table(name = "partes")
-public class Partes  implements Serializable{
+@Table(name = "parte")
+public class Parte  implements Serializable{
 	@Id
 	@Column(name = "id")
 	@GeneratedValue(strategy=GenerationType.IDENTITY)
-	private int id;
+	private Long id;
 	@Column(name = "nombre")
 	private String nombre;
 	@Column(name = "detalle")
 	private  String detalle;
 	
-	public Partes() {
+	public Parte() {
 		super();
 		// TODO Auto-generated constructor stub
 	}
 
-	public Partes(String nombre, String detalle) {
+	public Parte(String nombre, String detalle) {
 		super();
 		this.nombre = nombre;
 		this.detalle = detalle;
 	}
 
-	public int getId() {
+	public Long getId() {
 		return id;
 	}
 
-	public void setId(int id) {
+	public void setId(Long id) {
 		this.id = id;
 	}
 

@@ -11,27 +11,27 @@ import javax.persistence.Table;
 public class AsignaTra implements Serializable{
 	
 	@Column(name="etaId")
-	private int etaId;
+	private Long etaId;
 	@Column(name="tratId")
-	private int tratId;
+	private Long tratId;
 
 	public AsignaTra() {
 		// TODO Auto-generated constructor stub
 	}
 
-	public int getEtaId() {
+	public Long getEtaId() {
 		return etaId;
 	}
 
-	public void setEtaId(int etaId) {
+	public void setEtaId(Long etaId) {
 		this.etaId = etaId;
 	}
 
-	public int getTratId() {
+	public Long getTratId() {
 		return tratId;
 	}
 
-	public void setTratId(int tratId) {
+	public void setTratId(Long tratId) {
 		this.tratId = tratId;
 	}
 

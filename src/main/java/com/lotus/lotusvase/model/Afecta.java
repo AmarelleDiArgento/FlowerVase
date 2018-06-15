@@ -15,7 +15,7 @@ public class Afecta implements Serializable {
 	@Id
 	@Column(name = "id")
 	@GeneratedValue(strategy=GenerationType.IDENTITY)	
-	private int id;
+	private Long id;
 	@Column(name = "parId")
 	private int parId;
 	@Column(name = "cauId")
@@ -35,11 +35,11 @@ public class Afecta implements Serializable {
 		this.eliminado = eliminado;
 	}
 
-	public int getId() {
+	public Long getId() {
 		return id;
 	}
 
-	public void setId(int id) {
+	public void setId(Long id) {
 		this.id = id;
 	}
 

@@ -14,9 +14,9 @@ import javax.persistence.Table;
 public class AreaAfectada implements Serializable{
 	
 	@Column(name = "lecId")
-	private int lecId;
+	private Long lecId;
 	@Column(name = "afeId")
-	private int afeId;
+	private Long afeId;
 	@Column(name = "eliminado")
 	private boolean eliminado;
 	
@@ -25,19 +25,19 @@ public class AreaAfectada implements Serializable{
 		// TODO Auto-generated constructor stub
 	}
 
-	public int getLecId() {
+	public Long getLecId() {
 		return lecId;
 	}
 
-	public void setLecId(int lecId) {
+	public void setLecId(Long lecId) {
 		this.lecId = lecId;
 	}
 
-	public int getAfeId() {
+	public Long getAfeId() {
 		return afeId;
 	}
 
-	public void setAfeId(int afeId) {
+	public void setAfeId(Long afeId) {
 		this.afeId = afeId;
 	}
 

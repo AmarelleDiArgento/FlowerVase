@@ -11,9 +11,9 @@ import javax.persistence.Table;
 public class Adicionales implements Serializable{
 	
 	@Column(name="carId")
-	private int carId;
+	private Long carId;
 	@Column(name="lecId")
-	private int lecId;
+	private Long lecId;
 	@Column(name="valor")
 	private double valor;
 	
@@ -22,19 +22,19 @@ public class Adicionales implements Serializable{
 		// TODO Auto-generated constructor stub
 	}
 
-	public int getCarId() {
+	public Long getCarId() {
 		return carId;
 	}
 
-	public void setCarId(int carId) {
+	public void setCarId(Long carId) {
 		this.carId = carId;
 	}
 
-	public int getLecId() {
+	public Long getLecId() {
 		return lecId;
 	}
 
-	public void setLecId(int lecId) {
+	public void setLecId(Long lecId) {
 		this.lecId = lecId;
 	}
 

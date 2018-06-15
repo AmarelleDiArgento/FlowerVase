@@ -15,7 +15,7 @@ public class Permiso implements Serializable {
 	@Id
 	@Column(name = "id")
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	private int id;
+	private Long id;
 	@Column(name = "modulo")
 	private String modulo;
 	@Column(name = "permiso")
@@ -38,11 +38,11 @@ public class Permiso implements Serializable {
 		this.estado = estado;
 	}
 
-	public int getId() {
+	public Long getId() {
 		return id;
 	}
 
-	public void setId(int id) {
+	public void setId(Long id) {
 		this.id = id;
 	}
 

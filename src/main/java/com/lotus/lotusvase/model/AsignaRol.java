@@ -10,7 +10,7 @@ import javax.persistence.Table;
 @Table(name = "asignaRol")
 public class AsignaRol implements Serializable{
 	@Column(name="rolId")
-	private int rolId;
+	private Long rolId;
 	@Column(name="usuCod")
 	private String usuCod;
 
@@ -19,11 +19,11 @@ public class AsignaRol implements Serializable{
 		// TODO Auto-generated constructor stub
 	}
 
-	public int getRolId() {
+	public Long getRolId() {
 		return rolId;
 	}
 
-	public void setRolId(int rolId) {
+	public void setRolId(Long rolId) {
 		this.rolId = rolId;
 	}
 

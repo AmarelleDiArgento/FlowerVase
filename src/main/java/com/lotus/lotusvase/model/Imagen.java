@@ -15,9 +15,9 @@ public class Imagen implements Serializable {
 	@Id
 	@Column(name = "id")
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	private int id;
+	private Long id;
 	@Column(name = "lecId")
-	private int lecId;
+	private Long lecId;
 	@Column(name = "nombre")
 	private String nombre;
 	@Column(name = "url")
@@ -28,26 +28,26 @@ public class Imagen implements Serializable {
 		// TODO Auto-generated constructor stub
 	}
 
-	public Imagen(int lecId, String nombre, String url) {
+	public Imagen(Long lecId, String nombre, String url) {
 		super();
 		this.lecId = lecId;
 		this.nombre = nombre;
 		this.url = url;
 	}
 
-	public int getId() {
+	public Long getId() {
 		return id;
 	}
 
-	public void setId(int id) {
+	public void setId(Long id) {
 		this.id = id;
 	}
 
-	public int getLecId() {
+	public Long getLecId() {
 		return lecId;
 	}
 
-	public void setLecId(int lecId) {
+	public void setLecId(Long lecId) {
 		this.lecId = lecId;
 	}
 

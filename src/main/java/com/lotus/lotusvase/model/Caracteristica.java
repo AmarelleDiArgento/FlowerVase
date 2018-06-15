@@ -16,7 +16,7 @@ public class Caracteristica implements Serializable{
 	@Id
 	@Column(name = "id")
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	private int id;
+	private Long id;
 	@Column(name = "nombre")
 	private String nombre;
 	@Column(name = "unidad")
@@ -39,12 +39,12 @@ public class Caracteristica implements Serializable{
 	}
 
 
-	public int getId() {
+	public Long getId() {
 		return id;
 	}
 
 
-	public void setId(int id) {
+	public void setId(Long id) {
 		this.id = id;
 	}
 

@@ -14,23 +14,23 @@ import javax.persistence.Table;
 public class Conformado implements Serializable{
 	@Id
 	@Column(name = "parId")
-	private int parId;
+	private Long parId;
 	@Column(name = "proId")
-	private int proId;
+	private Long proId;
 	
 	public Conformado() {
 		// TODO Auto-generated constructor stub
 	}
-	public int getParId() {
+	public Long getParId() {
 		return parId;
 	}
-	public void setParId(int parId) {
+	public void setParId(Long parId) {
 		this.parId = parId;
 	}
-	public int getProId() {
+	public Long getProId() {
 		return proId;
 	}
-	public void setProId(int proId) {
+	public void setProId(Long proId) {
 		this.proId = proId;
 	}
 

@@ -15,7 +15,7 @@ public class Causa implements Serializable{
 	@Id
 	@Column(name = "id")
 	@GeneratedValue(strategy=GenerationType.IDENTITY)
-	private int id;
+	private Long id;
 	@Column(name = "nombre")
 	private  String nombre;
 	@Column(name = "detalle")
@@ -32,11 +32,11 @@ public class Causa implements Serializable{
 		this.detalle = detalle;
 	}
 
-	public int getId() {
+	public Long getId() {
 		return id;
 	}
 
-	public void setId(int id) {
+	public void setId(Long id) {
 		this.id = id;
 	}
 

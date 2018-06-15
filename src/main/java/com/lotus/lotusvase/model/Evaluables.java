@@ -15,44 +15,44 @@ public class Evaluables implements Serializable {
 	@Id
 	@Column(name = "id")
 	@GeneratedValue(strategy=GenerationType.IDENTITY)	
-	private int id;
+	private Long id;
 	@Column(name = "proId")
-	private int proId;
+	private Long proId;
 	@Column(name = "varId")
-	private int varId;
+	private Long varId;
 	
 	public Evaluables() {
 		super();
 		// TODO Auto-generated constructor stub
 	}
 
-	public Evaluables(int proId, int varId) {
+	public Evaluables(Long proId, Long varId) {
 		super();
 		this.proId = proId;
 		this.varId = varId;
 	}
 
-	public int getId() {
+	public Long getId() {
 		return id;
 	}
 
-	public void setId(int id) {
+	public void setId(Long id) {
 		this.id = id;
 	}
 
-	public int getProId() {
+	public Long getProId() {
 		return proId;
 	}
 
-	public void setProId(int proId) {
+	public void setProId(Long proId) {
 		this.proId = proId;
 	}
 
-	public int getVarId() {
+	public Long getVarId() {
 		return varId;
 	}
 
-	public void setVarId(int varId) {
+	public void setVarId(Long varId) {
 		this.varId = varId;
 	}
 	

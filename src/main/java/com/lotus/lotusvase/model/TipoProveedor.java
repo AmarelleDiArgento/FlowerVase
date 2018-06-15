@@ -15,11 +15,10 @@ public class TipoProveedor implements Serializable{
 	@Id
 	@Column(name = "id")
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	private int id;
+	private Long id;
 	@Column(name = "nombre")
 	private String nombre;
 	
-
 	public TipoProveedor() {
 		super();
 		// TODO Auto-generated constructor stub
@@ -32,12 +31,12 @@ public class TipoProveedor implements Serializable{
 	}
 
 
-	public int getId() {
+	public Long getId() {
 		return id;
 	}
 
 
-	public void setId(int id) {
+	public void setId(Long id) {
 		this.id = id;
 	}
 
