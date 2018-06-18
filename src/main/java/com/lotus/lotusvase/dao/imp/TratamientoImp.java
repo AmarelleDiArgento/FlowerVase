@@ -9,38 +9,40 @@ import org.springframework.stereotype.Repository;
 import com.lotus.lotusvase.dao.SessionAbs;
 import com.lotus.lotusvase.dao.interfaces.TratamientoDao;
 import com.lotus.lotusvase.model.Tratamiento;
+
 @Repository
 @Transactional
 public class TratamientoImp extends SessionAbs implements  TratamientoDao{
 
 	@Override
-	public void save(Tratamiento o) {
-		// TODO Auto-generated method stub
+	public void save(Tratamiento tr) {
+		getSession().persist(tr);
 		
 	}
 
 	@Override
-	public void update(Tratamiento o) {
-		// TODO Auto-generated method stub
+	public void update(Tratamiento tr) {
+		getSession().update(tr);
 		
 	}
 
 	@Override
 	public void deleteById(Long id) {
-		// TODO Auto-generated method stub
+		Tratamiento tr = findById(id);
+		if (tr != null) {
+			getSession().delete(tr);
+		}
 		
 	}
 
 	@Override
 	public Tratamiento findById(Long id) {
-		// TODO Auto-generated method stub
-		return null;
+		return getSession().get(Tratamiento.class, id);
 	}
 
 	@Override
 	public List<Tratamiento> findAll() {
-		// TODO Auto-generated method stub
-		return null;
+		return getSession().createQuery("from Tratamiento").list();
 	}
 
 }

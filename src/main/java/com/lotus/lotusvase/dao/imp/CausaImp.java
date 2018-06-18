@@ -9,38 +9,40 @@ import org.springframework.stereotype.Repository;
 import com.lotus.lotusvase.dao.SessionAbs;
 import com.lotus.lotusvase.dao.interfaces.CausaDao;
 import com.lotus.lotusvase.model.Causa;
+
 @Repository
 @Transactional
 public class CausaImp extends SessionAbs implements CausaDao {
 
 	@Override
-	public void save(Causa o) {
-		// TODO Auto-generated method stub
+	public void save(Causa ca) {
+		getSession().persist(ca);
 		
 	}
 
 	@Override
-	public void update(Causa o) {
-		// TODO Auto-generated method stub
+	public void update(Causa ca) {
+		getSession().update(ca);
 		
 	}
 
 	@Override
 	public void deleteById(Long id) {
-		// TODO Auto-generated method stub
+		Causa ca = findById(id);
+		if (ca != null) {
+			getSession().delete(ca);
+		}
 		
 	}
 
 	@Override
 	public Causa findById(Long id) {
-		// TODO Auto-generated method stub
-		return null;
+		return getSession().get(Causa.class, id);
 	}
 
 	@Override
 	public List<Causa> findAll() {
-		// TODO Auto-generated method stub
-		return null;
+		return getSession().createQuery("from Causa").list();
 	}
 
 }

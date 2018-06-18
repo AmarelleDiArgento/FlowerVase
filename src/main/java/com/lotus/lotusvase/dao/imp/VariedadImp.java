@@ -3,44 +3,44 @@ package com.lotus.lotusvase.dao.imp;
 import java.util.List;
 
 import javax.transaction.Transactional;
-
 import org.springframework.stereotype.Repository;
-
 import com.lotus.lotusvase.dao.SessionAbs;
 import com.lotus.lotusvase.dao.interfaces.VariedadDao;
 import com.lotus.lotusvase.model.Variedad;
+
 @Repository
 @Transactional
-public class VariedadImp extends SessionAbs implements VariedadDao{
+public class VariedadImp extends SessionAbs implements VariedadDao {
 
 	@Override
-	public void save(Variedad o) {
-		// TODO Auto-generated method stub
-		
+	public void save(Variedad va) {
+		getSession().persist(va);
+
 	}
 
 	@Override
-	public void update(Variedad o) {
-		// TODO Auto-generated method stub
-		
+	public void update(Variedad va) {
+		getSession().update(va);
+
 	}
 
 	@Override
 	public void deleteById(Long id) {
-		// TODO Auto-generated method stub
-		
+		Variedad va = findById(id);
+		if (va != null) {
+			getSession().delete(va);
+		}
+
 	}
 
 	@Override
 	public Variedad findById(Long id) {
-		// TODO Auto-generated method stub
-		return null;
+		return getSession().get(Variedad.class, id);
 	}
 
 	@Override
 	public List<Variedad> findAll() {
-		// TODO Auto-generated method stub
-		return null;
+		return getSession().createQuery("from Variedad").list();
 	}
 
 }

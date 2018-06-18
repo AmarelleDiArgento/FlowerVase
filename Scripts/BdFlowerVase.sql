@@ -40,8 +40,8 @@ CREATE TABLE IF NOT EXISTS FlowerVase.evaluacion (
   id VARCHAR(12) NOT NULL,
   nombre VARCHAR(60) NOT NULL,
   detalle MEDIUMTEXT NOT NULL,
-  protocolo VARCHAR(45) NULL,
-  tipoEnsayo_id INT NOT NULL,
+  protocolo VARCHAR(255) NULL,
+  tipoEnsayo_id Long NOT NULL,
   solicitante VARCHAR(60) NOT NULL,
   Usuario_codigo VARCHAR(7) NOT NULL,
   PRIMARY KEY (id, Usuario_codigo),
@@ -64,7 +64,7 @@ ENGINE = InnoDB;
 -- Table FlowerVase.simulacion
 -- -----------------------------------------------------
 CREATE TABLE IF NOT EXISTS FlowerVase.simulacion (
-  id INT NOT NULL,
+  id Long NOT NULL auto_increment,
   nombre VARCHAR(45) NOT NULL,
   dias INT NULL,
   detalles MEDIUMTEXT NULL,
@@ -73,25 +73,25 @@ CREATE TABLE IF NOT EXISTS FlowerVase.simulacion (
 ENGINE = InnoDB;
 
 -- -----------------------------------------------------
--- Table FlowerVase.Etapa
+-- Table FlowerVase.etapa
 -- -----------------------------------------------------
-CREATE TABLE IF NOT EXISTS FlowerVase.Etapa (
-  id INT NOT NULL AUTO_INCREMENT,
+CREATE TABLE IF NOT EXISTS FlowerVase.etapa (
+  id Long NOT NULL auto_increment,
   nombre VARCHAR(45) NOT NULL,
   Ensayo_id VARCHAR(12) NOT NULL,
-  simulacion_id INT NOT NULL,
+  simulacion_id Long NOT NULL,
   fechaFlorero DATE NULL,
   fechaCorte DATE NULL,
   PRIMARY KEY (id),
   UNIQUE INDEX id_UNIQUE (id ASC),
-  INDEX fk_Etapa_Ensayo_idx (Ensayo_id ASC),
-  INDEX fk_Etapa_simulacion1_idx (simulacion_id ASC),
-  CONSTRAINT fk_Etapa_Ensayo
+  INDEX fk_etapa_Ensayo_idx (Ensayo_id ASC),
+  INDEX fk_etapa_simulacion1_idx (simulacion_id ASC),
+  CONSTRAINT fk_etapa_Ensayo
     FOREIGN KEY (Ensayo_id)
     REFERENCES FlowerVase.evaluacion (id)
     ON DELETE NO ACTION
     ON UPDATE NO ACTION,
-  CONSTRAINT fk_Etapa_simulacion1
+  CONSTRAINT fk_etapa_simulacion1
     FOREIGN KEY (simulacion_id)
     REFERENCES FlowerVase.simulacion (id)
     ON DELETE NO ACTION
@@ -102,7 +102,7 @@ ENGINE = InnoDB;
 -- Table FlowerVase.tratamiento
 -- -----------------------------------------------------
 CREATE TABLE IF NOT EXISTS FlowerVase.tratamiento (
-  id INT NOT NULL,
+  id Long NOT NULL auto_increment,
   nombre VARCHAR(60) NOT NULL,
   detalle MEDIUMTEXT NOT NULL,
   nomenclatura VARCHAR(5) NOT NULL,
@@ -114,7 +114,7 @@ ENGINE = InnoDB;
 -- Table FlowerVase.producto
 -- -----------------------------------------------------
 CREATE TABLE IF NOT EXISTS FlowerVase.producto (
-  id INT NOT NULL AUTO_INCREMENT,
+  id Long NOT NULL auto_increment,
   nombre VARCHAR(45) NULL,
   meta INT NULL,
   PRIMARY KEY (id),
@@ -125,10 +125,10 @@ ENGINE = InnoDB;
 -- Table FlowerVase.variedad
 -- -----------------------------------------------------
 CREATE TABLE IF NOT EXISTS FlowerVase.variedad (
-  id INT NOT NULL AUTO_INCREMENT,
+  id Long NOT NULL auto_increment,
   nombre VARCHAR(45) NOT NULL,
   color VARCHAR(45) NOT NULL,
-  producto_id INT NOT NULL,
+  producto_id Long NOT NULL,
   PRIMARY KEY (id),
   UNIQUE INDEX id_UNIQUE (id ASC),
   INDEX fk_variedad_producto1_idx (producto_id ASC),
@@ -143,7 +143,7 @@ ENGINE = InnoDB;
 -- Table FlowerVase.tipoProveedor
 -- -----------------------------------------------------
 CREATE TABLE IF NOT EXISTS FlowerVase.tipoProveedor (
-  id INT NOT NULL AUTO_INCREMENT,
+  id Long NOT NULL auto_increment,
   nombre VARCHAR(50) NOT NULL,
   PRIMARY KEY (id))
 ENGINE = InnoDB;
@@ -152,10 +152,10 @@ ENGINE = InnoDB;
 -- Table FlowerVase.proveedor
 -- -----------------------------------------------------
 CREATE TABLE IF NOT EXISTS FlowerVase.proveedor (
-  id INT NOT NULL AUTO_INCREMENT,
+  id Long NOT NULL auto_increment,
   nombre VARCHAR(45) NOT NULL,
   bloque VARCHAR(6) NULL,
-  tipoProveedor INT NOT NULL,
+  tipoProveedor Long NOT NULL,
   PRIMARY KEY (id),
   UNIQUE INDEX id_UNIQUE (id ASC),
   INDEX fk_proveedor_tipoProveedor1_idx (tipoProveedor ASC),
@@ -170,17 +170,17 @@ ENGINE = InnoDB;
 -- Table FlowerVase.causa
 -- -----------------------------------------------------
 CREATE TABLE IF NOT EXISTS FlowerVase.causa (
-  id INT NOT NULL,
+  id Long NOT NULL auto_increment,
   nombre VARCHAR(45) NOT NULL,
   detalle VARCHAR(45) NOT NULL,
   PRIMARY KEY (id))
 ENGINE = InnoDB;
 
 -- -----------------------------------------------------
--- Table FlowerVase.partes
+-- Table FlowerVase.parte
 -- -----------------------------------------------------
-CREATE TABLE IF NOT EXISTS FlowerVase.partes (
-  id INT NOT NULL,
+CREATE TABLE IF NOT EXISTS FlowerVase.parte (
+  id Long NOT NULL auto_increment,
   nombre VARCHAR(45) NOT NULL,
   detalle MEDIUMTEXT NULL,
   PRIMARY KEY (id))
@@ -190,17 +190,17 @@ ENGINE = InnoDB;
 -- Table FlowerVase.conformado
 -- -----------------------------------------------------
 CREATE TABLE IF NOT EXISTS FlowerVase.conformado (
-  parId INT NOT NULL,
-  proId INT NOT NULL,
+  parId Long NOT NULL,
+  proId Long NOT NULL,
   PRIMARY KEY (parId, proId),
-  INDEX fk_partes_has_producto_producto1_idx (proId ASC),
-  INDEX fk_partes_has_producto_partes1_idx (parId ASC),
-  CONSTRAINT fk_partes_has_producto_partes1
+  INDEX fk_parte_has_producto_producto1_idx (proId ASC),
+  INDEX fk_parte_has_producto_parte1_idx (parId ASC),
+  CONSTRAINT fk_parte_has_producto_parte1
     FOREIGN KEY (parId)
-    REFERENCES FlowerVase.partes (id)
+    REFERENCES FlowerVase.parte (id)
     ON DELETE NO ACTION
     ON UPDATE NO ACTION,
-  CONSTRAINT fk_partes_has_producto_producto1
+  CONSTRAINT fk_parte_has_producto_producto1
     FOREIGN KEY (proId)
     REFERENCES FlowerVase.producto (id)
     ON DELETE NO ACTION
@@ -211,17 +211,17 @@ ENGINE = InnoDB;
 -- Table FlowerVase.ramo
 -- -----------------------------------------------------
 CREATE TABLE IF NOT EXISTS FlowerVase.ramo (
-  id INT NOT NULL AUTO_INCREMENT,
-  EtaId INT NOT NULL,
-  traId INT NOT NULL,
+  id Long NOT NULL auto_increment,
+  EtaId Long NOT NULL,
+  traId Long NOT NULL,
   observacion MEDIUMTEXT NULL,
   PRIMARY KEY (id, EtaId, traId),
   UNIQUE INDEX idramo_UNIQUE (id ASC),
-  INDEX fk_ramo_Etapa1_idx (EtaId ASC),
+  INDEX fk_ramo_etapa1_idx (EtaId ASC),
   INDEX fk_ramo_tratamiento1_idx (traId ASC),
-  CONSTRAINT fk_ramo_Etapa1
+  CONSTRAINT fk_ramo_etapa1
     FOREIGN KEY (EtaId)
-    REFERENCES FlowerVase.Etapa (id)
+    REFERENCES FlowerVase.etapa (id)
     ON DELETE NO ACTION
     ON UPDATE NO ACTION,
   CONSTRAINT fk_ramo_tratamiento1
@@ -235,7 +235,7 @@ ENGINE = InnoDB;
 -- Table FlowerVase.lectura
 -- -----------------------------------------------------
 CREATE TABLE IF NOT EXISTS FlowerVase.lectura (
-  id INT NOT NULL,
+  id Long NOT NULL auto_increment,
   ramId INT NOT NULL,
   numTallos INT NOT NULL,
   fecha DATE NOT NULL,
@@ -252,9 +252,9 @@ ENGINE = InnoDB;
 -- Table FlowerVase.evaluables
 -- -----------------------------------------------------
 CREATE TABLE IF NOT EXISTS FlowerVase.evaluables (
-  id INT NOT NULL AUTO_INCREMENT,
-  proId INT NOT NULL,
-  varId INT NOT NULL,
+  id Long NOT NULL auto_increment,
+  proId Long NOT NULL,
+  varId Long NOT NULL,
   PRIMARY KEY (id),
   INDEX fk_evaluables_proveedor1_idx (proId ASC),
   INDEX fk_evaluables_variedad1_idx (varId ASC),
@@ -274,15 +274,15 @@ ENGINE = InnoDB;
 -- Table FlowerVase.afecta
 -- -----------------------------------------------------
 CREATE TABLE IF NOT EXISTS FlowerVase.afecta (
-  id INT NOT NULL AUTO_INCREMENT,
-  parId INT NOT NULL,
-  cauId INT NOT NULL,
+  id Long NOT NULL auto_increment,
+  parId Long NOT NULL,
+  cauId Long NOT NULL,
   PRIMARY KEY (id, parId, cauId),
-  INDEX fk_afecta_partes1_idx (parId ASC),
+  INDEX fk_afecta_parte1_idx (parId ASC),
   INDEX fk_afecta_causa1_idx (cauId ASC),
-  CONSTRAINT fk_afecta_partes1
+  CONSTRAINT fk_afecta_parte1
     FOREIGN KEY (parId)
-    REFERENCES FlowerVase.partes (id)
+    REFERENCES FlowerVase.parte (id)
     ON DELETE NO ACTION
     ON UPDATE NO ACTION,
   CONSTRAINT fk_afecta_causa1
@@ -296,8 +296,9 @@ ENGINE = InnoDB;
 -- Table FlowerVase.areaAfectada
 -- -----------------------------------------------------
 CREATE TABLE IF NOT EXISTS FlowerVase.areaAfectada (
-  lecId INT NOT NULL,
-  afeId INT NOT NULL,
+  lecId Long NOT NULL,
+  afeId Long NOT NULL,
+  eliminado boolean NOT NULL,
   PRIMARY KEY (lecId, afeId),
   INDEX fk_eliminacion_has_afecta_afecta1_idx (afeId ASC),
   INDEX fk_eliminacion_has_afecta_eliminacion1_idx (lecId ASC),
@@ -317,10 +318,10 @@ ENGINE = InnoDB;
 -- Table FlowerVase.imagen
 -- -----------------------------------------------------
 CREATE TABLE IF NOT EXISTS FlowerVase.imagen (
-  id INT NOT NULL AUTO_INCREMENT,
+  id Long NOT NULL auto_increment,
   lecId INT NOT NULL,
   nombre VARCHAR(45) NOT NULL,
-  url VARCHAR(45) NOT NULL,
+  url VARCHAR(255) NOT NULL,
   PRIMARY KEY (id),
   UNIQUE INDEX id_UNIQUE (id ASC),
   INDEX fk_imagen_eliminacion1_idx (lecId ASC),
@@ -332,10 +333,10 @@ CREATE TABLE IF NOT EXISTS FlowerVase.imagen (
 ENGINE = InnoDB;
 
 -- -----------------------------------------------------
--- Table FlowerVase.Rol
+-- Table FlowerVase.rol
 -- -----------------------------------------------------
-CREATE TABLE IF NOT EXISTS FlowerVase.Rol (
-  id INT NOT NULL AUTO_INCREMENT,
+CREATE TABLE IF NOT EXISTS FlowerVase.rol (
+  id Long NOT NULL auto_increment,
   nombre VARCHAR(45) NOT NULL,
   descripcion MEDIUMTEXT NOT NULL,
   estado TINYINT NOT NULL,
@@ -347,17 +348,17 @@ ENGINE = InnoDB;
 -- Table FlowerVase.asignaRol
 -- -----------------------------------------------------
 CREATE TABLE IF NOT EXISTS FlowerVase.asignaRol (
-  rolId INT NOT NULL,
+  rolId Long NOT NULL,
   usuCod VARCHAR(7) NOT NULL,
   PRIMARY KEY (rolId, usuCod),
-  INDEX fk_Rol_has_Usuario_Usuario1_idx (usuCod ASC),
-  INDEX fk_Rol_has_Usuario_Rol1_idx (rolId ASC),
-  CONSTRAINT fk_Rol_has_Usuario_Rol1
+  INDEX fk_rol_has_Usuario_Usuario1_idx (usuCod ASC),
+  INDEX fk_rol_has_Usuario_rol1_idx (rolId ASC),
+  CONSTRAINT fk_rol_has_Usuario_rol1
     FOREIGN KEY (rolId)
-    REFERENCES FlowerVase.Rol (id)
+    REFERENCES FlowerVase.rol (id)
     ON DELETE NO ACTION
     ON UPDATE NO ACTION,
-  CONSTRAINT fk_Rol_has_Usuario_Usuario1
+  CONSTRAINT fk_rol_has_Usuario_Usuario1
     FOREIGN KEY (usuCod)
     REFERENCES FlowerVase.Usuario (codigo)
     ON DELETE NO ACTION
@@ -368,7 +369,7 @@ ENGINE = InnoDB;
 -- Table FlowerVase.permiso
 -- -----------------------------------------------------
 CREATE TABLE IF NOT EXISTS FlowerVase.permiso (
-  id INT NOT NULL AUTO_INCREMENT,
+  id Long NOT NULL auto_increment,
   modulo VARCHAR(45) NOT NULL,
   permiso VARCHAR(45) NOT NULL,
   url VARCHAR(255) NOT NULL,
@@ -380,21 +381,21 @@ ENGINE = InnoDB;
 -- Table FlowerVase.asignaPer
 -- -----------------------------------------------------
 CREATE TABLE IF NOT EXISTS FlowerVase.asignaPer (
-  rolId INT NOT NULL,
-  perId INT NOT NULL,
+  rolId Long NOT NULL,
+  perId Long NOT NULL,
   leer TINYINT NOT NULL,
   nuevo TINYINT NOT NULL,
   modificar TINYINT NOT NULL,
   eliminar TINYINT NOT NULL,
   PRIMARY KEY (rolId, perId),
-  INDEX fk_Rol_has_permiso_permiso1_idx (perId ASC),
-  INDEX fk_Rol_has_permiso_Rol1_idx (rolId ASC),
-  CONSTRAINT fk_Rol_has_permiso_Rol1
+  INDEX fk_rol_has_permiso_permiso1_idx (perId ASC),
+  INDEX fk_rol_has_permiso_rol1_idx (rolId ASC),
+  CONSTRAINT fk_rol_has_permiso_rol1
     FOREIGN KEY (rolId)
-    REFERENCES FlowerVase.Rol (id)
+    REFERENCES FlowerVase.rol (id)
     ON DELETE NO ACTION
     ON UPDATE NO ACTION,
-  CONSTRAINT fk_Rol_has_permiso_permiso1
+  CONSTRAINT fk_rol_has_permiso_permiso1
     FOREIGN KEY (perId)
     REFERENCES FlowerVase.permiso (id)
     ON DELETE NO ACTION
@@ -405,10 +406,10 @@ ENGINE = InnoDB;
 -- Table FlowerVase.caracteristica
 -- -----------------------------------------------------
 CREATE TABLE IF NOT EXISTS FlowerVase.caracteristica (
-  id INT NOT NULL AUTO_INCREMENT,
+  id Long NOT NULL auto_increment,
   nombre VARCHAR(100) NOT NULL,
-  descripcion MEDIUMTEXT NOT NULL,
   unidad VARCHAR(45) NULL,
+  descripcion MEDIUMTEXT NOT NULL,
   PRIMARY KEY (id),
   UNIQUE INDEX id_UNIQUE (id ASC),
   UNIQUE INDEX nombre_UNIQUE (nombre ASC))
@@ -418,17 +419,17 @@ ENGINE = InnoDB;
 -- Table FlowerVase.asignaCar
 -- -----------------------------------------------------
 CREATE TABLE IF NOT EXISTS FlowerVase.asignaCar (
-  etaId INT NOT NULL,
-  carId INT NOT NULL,
+  etaId Long NOT NULL,
+  carId Long NOT NULL,
   PRIMARY KEY (etaId, carId),
-  INDEX fk_Etapa_has_caracteristica_caracteristica1_idx (carId ASC),
-  INDEX fk_Etapa_has_caracteristica_Etapa1_idx (etaId ASC),
-  CONSTRAINT fk_Etapa_has_caracteristica_Etapa1
+  INDEX fk_etapa_has_caracteristica_caracteristica1_idx (carId ASC),
+  INDEX fk_etapa_has_caracteristica_etapa1_idx (etaId ASC),
+  CONSTRAINT fk_etapa_has_caracteristica_etapa1
     FOREIGN KEY (etaId)
-    REFERENCES FlowerVase.Etapa (id)
+    REFERENCES FlowerVase.etapa (id)
     ON DELETE NO ACTION
     ON UPDATE NO ACTION,
-  CONSTRAINT fk_Etapa_has_caracteristica_caracteristica1
+  CONSTRAINT fk_etapa_has_caracteristica_caracteristica1
     FOREIGN KEY (carId)
     REFERENCES FlowerVase.caracteristica (id)
     ON DELETE NO ACTION
@@ -439,9 +440,9 @@ ENGINE = InnoDB;
 -- Table FlowerVase.adicionales
 -- -----------------------------------------------------
 CREATE TABLE IF NOT EXISTS FlowerVase.adicionales (
-  carId INT NOT NULL,
-  lecId INT NOT NULL,
-  dato MEDIUMTEXT NOT NULL,
+  carId Long NOT NULL,
+  lecId Long NOT NULL,
+  valor DOUBLE NOT NULL,
   PRIMARY KEY (carId, lecId),
   INDEX fk_caracteristica_has_lectura_lectura1_idx (lecId ASC),
   INDEX fk_caracteristica_has_lectura_caracteristica1_idx (carId ASC),
@@ -461,8 +462,8 @@ ENGINE = InnoDB;
 -- Table FlowerVase.asignaEva
 -- -----------------------------------------------------
 CREATE TABLE IF NOT EXISTS FlowerVase.asignaEva (
-  ramId INT NOT NULL,
-  evaId INT NOT NULL,
+  ramId Long NOT NULL,
+  evaId Long NOT NULL,
   tallos INT NOT NULL,
   PRIMARY KEY (ramId, evaId),
   INDEX fk_ramo_has_evaluables_evaluables1_idx (evaId ASC),
@@ -483,17 +484,17 @@ ENGINE = InnoDB;
 -- Table FlowerVase.asignaTra
 -- -----------------------------------------------------
 CREATE TABLE IF NOT EXISTS FlowerVase.asignaTra (
-  etaId INT NOT NULL,
-  tratId INT NOT NULL,
+  etaId Long NOT NULL,
+  tratId Long NOT NULL,
   PRIMARY KEY (etaId, tratId),
-  INDEX fk_Etapa_has_tratamiento_tratamiento1_idx (tratId ASC),
-  INDEX fk_Etapa_has_tratamiento_Etapa1_idx (etaId ASC),
-  CONSTRAINT fk_Etapa_has_tratamiento_Etapa1
+  INDEX fk_etapa_has_tratamiento_tratamiento1_idx (tratId ASC),
+  INDEX fk_etapa_has_tratamiento_etapa1_idx (etaId ASC),
+  CONSTRAINT fk_etapa_has_tratamiento_etapa1
     FOREIGN KEY (etaId)
-    REFERENCES FlowerVase.Etapa (id)
+    REFERENCES FlowerVase.etapa (id)
     ON DELETE NO ACTION
     ON UPDATE NO ACTION,
-  CONSTRAINT fk_Etapa_has_tratamiento_tratamiento1
+  CONSTRAINT fk_etapa_has_tratamiento_tratamiento1
     FOREIGN KEY (tratId)
     REFERENCES FlowerVase.tratamiento (id)
     ON DELETE NO ACTION
@@ -501,23 +502,23 @@ CREATE TABLE IF NOT EXISTS FlowerVase.asignaTra (
 ENGINE = InnoDB;
 
 -- -----------------------------------------------------
--- Table FlowerVase.Notas
+-- Table FlowerVase.nota
 -- -----------------------------------------------------
-CREATE TABLE IF NOT EXISTS FlowerVase.Notas (
-  id INT NOT NULL,
+CREATE TABLE IF NOT EXISTS FlowerVase.nota (
+  id Long NOT NULL auto_increment,
   tipo TINYINT NOT NULL,
   detalles LONGTEXT NOT NULL,
-  etaId INT NULL,
+  etaId Long NULL,
   evaId VARCHAR(12) NOT NULL,
   PRIMARY KEY (id),
-  INDEX fk_Notas_Etapa1_idx (etaId ASC),
-  INDEX fk_Notas_evaluacion1_idx (evaId ASC),
-  CONSTRAINT fk_Notas_Etapa1
+  INDEX fk_nota_etapa1_idx (etaId ASC),
+  INDEX fk_nota_evaluacion1_idx (evaId ASC),
+  CONSTRAINT fk_nota_etapa1
     FOREIGN KEY (etaId)
-    REFERENCES FlowerVase.Etapa (id)
+    REFERENCES FlowerVase.etapa (id)
     ON DELETE NO ACTION
     ON UPDATE NO ACTION,
-  CONSTRAINT fk_Notas_evaluacion1
+  CONSTRAINT fk_nota_evaluacion1
     FOREIGN KEY (evaId)
     REFERENCES FlowerVase.evaluacion (id)
     ON DELETE NO ACTION

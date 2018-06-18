@@ -9,38 +9,40 @@ import org.springframework.stereotype.Repository;
 import com.lotus.lotusvase.dao.SessionAbs;
 import com.lotus.lotusvase.dao.interfaces.EvaluacionDao;
 import com.lotus.lotusvase.model.Evaluacion;
+
 @Repository
 @Transactional
 public class EvaluacionImp extends SessionAbs implements EvaluacionDao {
 
 	@Override
-	public void save(Evaluacion o) {
-		// TODO Auto-generated method stub
+	public void save(Evaluacion ev) {
+		getSession().persist(ev);
 		
 	}
 
 	@Override
-	public void update(Evaluacion o) {
-		// TODO Auto-generated method stub
+	public void update(Evaluacion ev) {
+		getSession().update(ev);
 		
 	}
 
 	@Override
 	public void deleteById(Long id) {
-		// TODO Auto-generated method stub
+		Evaluacion ev = findById(id);
+		if (ev != null) {
+			getSession().delete(ev);
+		}
 		
 	}
 
 	@Override
 	public Evaluacion findById(Long id) {
-		// TODO Auto-generated method stub
-		return null;
+		return getSession().get(Evaluacion.class, id);
 	}
 
 	@Override
 	public List<Evaluacion> findAll() {
-		// TODO Auto-generated method stub
-		return null;
+		return getSession().createQuery("from Evaluacion").list();
 	}
 
 }

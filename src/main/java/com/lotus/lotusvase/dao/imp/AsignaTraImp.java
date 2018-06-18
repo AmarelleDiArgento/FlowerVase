@@ -9,38 +9,40 @@ import org.springframework.stereotype.Repository;
 import com.lotus.lotusvase.dao.SessionAbs;
 import com.lotus.lotusvase.dao.interfaces.AsignaTraDao;
 import com.lotus.lotusvase.model.AsignaTra;
+
 @Repository
 @Transactional
 public class AsignaTraImp extends SessionAbs implements AsignaTraDao {
 
 	@Override
-	public void save(AsignaTra o) {
-		// TODO Auto-generated method stub
+	public void save(AsignaTra at) {
+		getSession().persist(at);
 		
 	}
 
 	@Override
-	public void update(AsignaTra o) {
-		// TODO Auto-generated method stub
+	public void update(AsignaTra at) {
+		getSession().update(at);
 		
 	}
 
 	@Override
 	public void deleteById(Long id) {
-		// TODO Auto-generated method stub
+		AsignaTra at = findById(id);
+		if (at != null) {
+			getSession().delete(at);
+		}
 		
 	}
 
 	@Override
 	public AsignaTra findById(Long id) {
-		// TODO Auto-generated method stub
-		return null;
+		return getSession().get(AsignaTra.class, id);
 	}
 
 	@Override
 	public List<AsignaTra> findAll() {
-		// TODO Auto-generated method stub
-		return null;
+		return getSession().createQuery("from AsignaTra").list();
 	}
 
 }

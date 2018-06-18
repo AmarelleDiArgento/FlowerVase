@@ -16,32 +16,33 @@ public class TipoEvaluacionImp extends SessionAbs implements TipoEvaluacionDao {
 
 	@Override
 	public void save(TipoEvaluacion te) {
-		// TODO Auto-generated method stub
+		getSession().persist(te);
 
 	}
 
 	@Override
 	public void update(TipoEvaluacion te) {
-		// TODO Auto-generated method stub
+		getSession().update(te);
 
 	}
 
 	@Override
 	public void deleteById(Long id) {
-		// TODO Auto-generated method stub
+		TipoEvaluacion te = findById(id);
+		if (te != null) {
+			getSession().delete(te);
+		}
 
 	}
 
 	@Override
 	public TipoEvaluacion findById(Long id) {
-		// TODO Auto-generated method stub
-		return null;
+		return getSession().get(TipoEvaluacion.class, id);
 	}
 
 	@Override
 	public List<TipoEvaluacion> findAll() {
-		// TODO Auto-generated method stub
-		return null;
+		return getSession().createQuery("from TipoEvaluacion").list();
 	}
 
 }

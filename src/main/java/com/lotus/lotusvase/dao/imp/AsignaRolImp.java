@@ -9,38 +9,40 @@ import org.springframework.stereotype.Repository;
 import com.lotus.lotusvase.dao.SessionAbs;
 import com.lotus.lotusvase.dao.interfaces.AsignaRolDao;
 import com.lotus.lotusvase.model.AsignaRol;
+
 @Repository
 @Transactional
 public class AsignaRolImp extends SessionAbs implements AsignaRolDao {
 
 	@Override
-	public void save(AsignaRol o) {
-		// TODO Auto-generated method stub
+	public void save(AsignaRol ar) {
+		getSession().persist(ar);
 		
 	}
 
 	@Override
-	public void update(AsignaRol o) {
-		// TODO Auto-generated method stub
+	public void update(AsignaRol ar) {
+		getSession().update(ar);
 		
 	}
 
 	@Override
 	public void deleteById(Long id) {
-		// TODO Auto-generated method stub
+		AsignaRol ar = findById(id);
+		if (ar != null) {
+			getSession().delete(ar);
+		}
 		
 	}
 
 	@Override
 	public AsignaRol findById(Long id) {
-		// TODO Auto-generated method stub
-		return null;
+		return getSession().get(AsignaRol.class, id);
 	}
 
 	@Override
 	public List<AsignaRol> findAll() {
-		// TODO Auto-generated method stub
-		return null;
+		return getSession().createQuery("from AsignaRol").list();
 	}
 
 }

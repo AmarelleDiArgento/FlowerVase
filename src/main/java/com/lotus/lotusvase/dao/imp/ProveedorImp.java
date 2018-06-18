@@ -9,38 +9,40 @@ import org.springframework.stereotype.Repository;
 import com.lotus.lotusvase.dao.SessionAbs;
 import com.lotus.lotusvase.dao.interfaces.ProveedorDao;
 import com.lotus.lotusvase.model.Proveedor;
+
 @Repository
 @Transactional
 public class ProveedorImp extends SessionAbs implements  ProveedorDao{
 
 	@Override
-	public void save(Proveedor o) {
-		// TODO Auto-generated method stub
+	public void save(Proveedor pv) {
+		getSession().persist(pv);
 		
 	}
 
 	@Override
-	public void update(Proveedor o) {
-		// TODO Auto-generated method stub
+	public void update(Proveedor pv) {
+		getSession().update(pv);
 		
 	}
 
 	@Override
 	public void deleteById(Long id) {
-		// TODO Auto-generated method stub
+		Proveedor pv = findById(id);
+		if (pv != null) {
+			getSession().delete(pv);
+		}
 		
 	}
 
 	@Override
 	public Proveedor findById(Long id) {
-		// TODO Auto-generated method stub
-		return null;
+		return getSession().get(Proveedor.class, id);
 	}
 
 	@Override
 	public List<Proveedor> findAll() {
-		// TODO Auto-generated method stub
-		return null;
+		return getSession().createQuery("from Proveedor").list();
 	}
 
 }

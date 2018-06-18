@@ -17,7 +17,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.util.UriComponentsBuilder;
 
 import com.lotus.lotusvase.model.Usuario;
-import com.lotus.lotusvase.service.UsuarioService;
+import com.lotus.lotusvase.service.interfaces.UsuServ;
 import com.lotus.lotusvase.util.CustomErrorType;
 
 @Controller
@@ -27,7 +27,7 @@ public class UsuarioCtrl {
 
 
 	@Autowired
-	UsuarioService uSer;
+	UsuServ uSer;
 
 	// GET
 	@RequestMapping(value = "/usuarios", method = RequestMethod.GET, 

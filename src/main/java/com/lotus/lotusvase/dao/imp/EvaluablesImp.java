@@ -9,38 +9,40 @@ import org.springframework.stereotype.Repository;
 import com.lotus.lotusvase.dao.SessionAbs;
 import com.lotus.lotusvase.dao.interfaces.EvaluablesDao;
 import com.lotus.lotusvase.model.Evaluables;
+
 @Repository
 @Transactional
 public class EvaluablesImp extends SessionAbs implements EvaluablesDao{
 
 	@Override
-	public void save(Evaluables o) {
-		// TODO Auto-generated method stub
+	public void save(Evaluables ev) {
+		getSession().persist(ev);
 		
 	}
 
 	@Override
-	public void update(Evaluables o) {
-		// TODO Auto-generated method stub
+	public void update(Evaluables ev) {
+		getSession().update(ev);
 		
 	}
 
 	@Override
 	public void deleteById(Long id) {
-		// TODO Auto-generated method stub
+		Evaluables ev = findById(id);
+		if (ev != null) {
+			getSession().delete(ev);
+		}
 		
 	}
 
 	@Override
 	public Evaluables findById(Long id) {
-		// TODO Auto-generated method stub
-		return null;
+		return getSession().get(Evaluables.class, id);
 	}
 
 	@Override
 	public List<Evaluables> findAll() {
-		// TODO Auto-generated method stub
-		return null;
+		return getSession().createQuery("from Evaluables").list();
 	}
 
 }

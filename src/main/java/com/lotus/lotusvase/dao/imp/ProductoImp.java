@@ -9,38 +9,40 @@ import org.springframework.stereotype.Repository;
 import com.lotus.lotusvase.dao.SessionAbs;
 import com.lotus.lotusvase.dao.interfaces.ProductoDao;
 import com.lotus.lotusvase.model.Producto;
+
 @Repository
 @Transactional
 public class ProductoImp extends SessionAbs implements ProductoDao {
 
 	@Override
-	public void save(Producto o) {
-		// TODO Auto-generated method stub
+	public void save(Producto pd) {
+		getSession().persist(pd);
 		
 	}
 
 	@Override
-	public void update(Producto o) {
-		// TODO Auto-generated method stub
+	public void update(Producto pd) {
+		getSession().update(pd);
 		
 	}
 
 	@Override
 	public void deleteById(Long id) {
-		// TODO Auto-generated method stub
+		Producto pd = findById(id);
+		if (pd != null) {
+			getSession().delete(pd);
+		}
 		
 	}
 
 	@Override
 	public Producto findById(Long id) {
-		// TODO Auto-generated method stub
-		return null;
+		return getSession().get(Producto.class, id);
 	}
 
 	@Override
 	public List<Producto> findAll() {
-		// TODO Auto-generated method stub
-		return null;
+		return getSession().createQuery("from Producto").list();
 	}
 
 }

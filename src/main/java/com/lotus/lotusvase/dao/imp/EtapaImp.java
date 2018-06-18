@@ -8,39 +8,41 @@ import org.springframework.stereotype.Repository;
 
 import com.lotus.lotusvase.dao.SessionAbs;
 import com.lotus.lotusvase.dao.interfaces.EtapaDao;
-import com.lotus.lotusvase.model.Conformado;
+import com.lotus.lotusvase.model.Etapa;
+
 @Repository
 @Transactional
 public class EtapaImp extends SessionAbs implements EtapaDao{
 
 	@Override
-	public void save(Conformado o) {
-		// TODO Auto-generated method stub
+	public void save(Etapa et) {
+		getSession().persist(et);
 		
 	}
 
 	@Override
-	public void update(Conformado o) {
-		// TODO Auto-generated method stub
+	public void update(Etapa et) {
+		getSession().update(et);
 		
 	}
 
 	@Override
 	public void deleteById(Long id) {
-		// TODO Auto-generated method stub
+		Etapa et = findById(id);
+		if (et != null) {
+			getSession().delete(et);
+		}
 		
 	}
 
 	@Override
-	public Conformado findById(Long id) {
-		// TODO Auto-generated method stub
-		return null;
+	public Etapa  findById(Long id) {
+		return getSession().get(Etapa.class, id);
 	}
 
 	@Override
-	public List<Conformado> findAll() {
-		// TODO Auto-generated method stub
-		return null;
+	public List<Etapa> findAll() {
+		return getSession().createQuery("from Etapa").list();
 	}
 
 }

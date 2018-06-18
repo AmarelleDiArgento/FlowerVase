@@ -9,38 +9,40 @@ import org.springframework.stereotype.Repository;
 import com.lotus.lotusvase.dao.SessionAbs;
 import com.lotus.lotusvase.dao.interfaces.NotaDao;
 import com.lotus.lotusvase.model.Nota;
+
 @Repository
 @Transactional
 public class NotaImp extends SessionAbs implements NotaDao {
 
 	@Override
-	public void save(Nota o) {
-		// TODO Auto-generated method stub
+	public void save(Nota nt) {
+		getSession().persist(nt);
 		
 	}
 
 	@Override
-	public void update(Nota o) {
-		// TODO Auto-generated method stub
+	public void update(Nota nt) {
+		getSession().update(nt);
 		
 	}
 
 	@Override
 	public void deleteById(Long id) {
-		// TODO Auto-generated method stub
+		Nota nt = findById(id);
+		if (nt != null) {
+			getSession().delete(nt);
+		}
 		
 	}
 
 	@Override
 	public Nota findById(Long id) {
-		// TODO Auto-generated method stub
-		return null;
+		return getSession().get(Nota.class, id);
 	}
 
 	@Override
 	public List<Nota> findAll() {
-		// TODO Auto-generated method stub
-		return null;
+		return getSession().createQuery("from Nota").list();
 	}
 
 }

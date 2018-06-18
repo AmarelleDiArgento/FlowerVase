@@ -9,38 +9,40 @@ import org.springframework.stereotype.Repository;
 import com.lotus.lotusvase.dao.SessionAbs;
 import com.lotus.lotusvase.dao.interfaces.ConformadoDao;
 import com.lotus.lotusvase.model.Conformado;
+
 @Repository
 @Transactional
-public class ConformadoImp extends SessionAbs implements  ConformadoDao{
+public class ConformadoImp extends SessionAbs implements ConformadoDao {
 
 	@Override
-	public void save(Conformado o) {
-		// TODO Auto-generated method stub
-		
+	public void save(Conformado co) {
+		getSession().persist(co);
+
 	}
 
 	@Override
-	public void update(Conformado o) {
-		// TODO Auto-generated method stub
-		
+	public void update(Conformado co) {
+		getSession().update(co);
+
 	}
 
 	@Override
 	public void deleteById(Long id) {
-		// TODO Auto-generated method stub
-		
+		Conformado co = findById(id);
+		if (co != null) {
+			getSession().delete(co);
+		}
+
 	}
 
 	@Override
 	public Conformado findById(Long id) {
-		// TODO Auto-generated method stub
-		return null;
+		return getSession().get(Conformado.class, id);
 	}
 
 	@Override
 	public List<Conformado> findAll() {
-		// TODO Auto-generated method stub
-		return null;
+		return getSession().createQuery("from Conformado").list();
 	}
 
 }

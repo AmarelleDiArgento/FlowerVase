@@ -9,38 +9,40 @@ import org.springframework.stereotype.Repository;
 import com.lotus.lotusvase.dao.SessionAbs;
 import com.lotus.lotusvase.dao.interfaces.AfectaDao;
 import com.lotus.lotusvase.model.Afecta;
+
 @Repository
 @Transactional
 public class AfectaImp extends SessionAbs implements AfectaDao {
 
 	@Override
-	public void save(Afecta o) {
-		// TODO Auto-generated method stub
+	public void save(Afecta a) {
+		getSession().persist(a);
 		
 	}
 
 	@Override
-	public void update(Afecta o) {
-		// TODO Auto-generated method stub
+	public void update(Afecta a) {
+		getSession().update(a);
 		
 	}
 
 	@Override
 	public void deleteById(Long id) {
-		// TODO Auto-generated method stub
+		Afecta a = findById(id);
+		if (a != null) {
+			getSession().delete(a);
+		}
 		
 	}
 
 	@Override
 	public Afecta findById(Long id) {
-		// TODO Auto-generated method stub
-		return null;
+		return getSession().get(Afecta.class, id);
 	}
 
 	@Override
 	public List<Afecta> findAll() {
-		// TODO Auto-generated method stub
-		return null;
+		return getSession().createQuery("from Afecta").list();
 	}
 
 }

@@ -9,38 +9,40 @@ import org.springframework.stereotype.Repository;
 import com.lotus.lotusvase.dao.SessionAbs;
 import com.lotus.lotusvase.dao.interfaces.SimulacionDao;
 import com.lotus.lotusvase.model.Simulacion;
+
 @Repository
 @Transactional
 public class SimulacionImp extends SessionAbs implements SimulacionDao{
 
 	@Override
-	public void save(Simulacion o) {
-		// TODO Auto-generated method stub
+	public void save(Simulacion si) {
+		getSession().persist(si);
 		
 	}
 
 	@Override
-	public void update(Simulacion o) {
-		// TODO Auto-generated method stub
+	public void update(Simulacion si) {
+		getSession().update(si);
 		
 	}
 
 	@Override
 	public void deleteById(Long id) {
-		// TODO Auto-generated method stub
+		Simulacion si = findById(id);
+		if (si != null) {
+			getSession().delete(si);
+		}
 		
 	}
 
 	@Override
 	public Simulacion findById(Long id) {
-		// TODO Auto-generated method stub
-		return null;
+		return getSession().get(Simulacion.class, id);
 	}
 
 	@Override
 	public List<Simulacion> findAll() {
-		// TODO Auto-generated method stub
-		return null;
+		return getSession().createQuery("from Simulacion").list();
 	}
 
 }
