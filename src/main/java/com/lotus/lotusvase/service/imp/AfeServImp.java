@@ -18,31 +18,26 @@ public class AfeServImp implements AfeServ{
 
 	@Override
 	public void save(Afecta af) {
-		// TODO Auto-generated method stub
-		
+		afDao.save(af);	
 	}
 
 	@Override
 	public void update(Afecta af) {
-		// TODO Auto-generated method stub
-		
+		afDao.update(af);
 	}
 
 	@Override
 	public void deleteById(Long id) {
-		// TODO Auto-generated method stub
-		
+		afDao.deleteById(id);
 	}
 
 	@Override
 	public Afecta findById(Long id) {
-		// TODO Auto-generated method stub
-		return null;
+		return afDao.findById(id);
 	}
 
 	@Override
 	public List<Afecta> findAll() {
-		// TODO Auto-generated method stub
-		return null;
+		return afDao.findAll();
 	}
 }

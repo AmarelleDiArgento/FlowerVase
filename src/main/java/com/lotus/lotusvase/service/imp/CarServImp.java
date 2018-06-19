@@ -18,33 +18,28 @@ public class CarServImp implements CarServ{
 	@Autowired
 	private CaracteristicaDao cDao;
 	@Override
-	public void save(Caracteristica o) {
-		// TODO Auto-generated method stub
-		
+	public void save(Caracteristica c) {
+		cDao.save(c);	
 	}
 
 	@Override
-	public void update(Caracteristica o) {
-		// TODO Auto-generated method stub
-		
+	public void update(Caracteristica c) {
+		cDao.update(c);
 	}
 
 	@Override
 	public void deleteById(Long id) {
-		// TODO Auto-generated method stub
-		
+		cDao.deleteById(id);
 	}
 
 	@Override
 	public Caracteristica findById(Long id) {
-		// TODO Auto-generated method stub
-		return null;
+		return cDao.findById(id);
 	}
 
 	@Override
 	public List<Caracteristica> findAll() {
-		// TODO Auto-generated method stub
-		return null;
+		return cDao.findAll();
 	}
 
 }

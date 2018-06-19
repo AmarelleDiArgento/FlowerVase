@@ -30,8 +30,7 @@ public class UsuarioCtrl {
 	UsuServ uSer;
 
 	// GET
-	@RequestMapping(value = "/usuarios", method = RequestMethod.GET, 
-			  headers="Accept=application/json") 
+	@RequestMapping(value = "/usuarios", method = RequestMethod.GET, headers="Accept=application/json") 
 public ResponseEntity<List<Usuario>> getUsuarios() {
 		List<Usuario> usuList = new ArrayList<>();
 		usuList = uSer.findAll();

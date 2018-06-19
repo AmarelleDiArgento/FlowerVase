@@ -18,33 +18,28 @@ public class AsPerServImp implements AsPerServ {
 	@Autowired
 	private AsignaPerDao apDao;
 	@Override
-	public void save(AsignaPer o) {
-		// TODO Auto-generated method stub
-		
+	public void save(AsignaPer ap) {
+		 apDao.save(ap);	
 	}
 
 	@Override
-	public void update(AsignaPer o) {
-		// TODO Auto-generated method stub
-		
+	public void update(AsignaPer ap) {
+		 apDao.update(ap);
 	}
 
 	@Override
 	public void deleteById(Long id) {
-		// TODO Auto-generated method stub
-		
+		 apDao.deleteById(id);
 	}
 
 	@Override
 	public AsignaPer findById(Long id) {
-		// TODO Auto-generated method stub
-		return null;
+		return apDao.findById(id);
 	}
 
 	@Override
 	public List<AsignaPer> findAll() {
-		// TODO Auto-generated method stub
-		return null;
+		return apDao.findAll();
 	}
 
 }

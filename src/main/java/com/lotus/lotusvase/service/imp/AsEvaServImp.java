@@ -18,33 +18,28 @@ public class AsEvaServImp implements AsEvaServ{
 	@Autowired
 	private AsignaEvaDao aeDao;
 	@Override
-	public void save(AsignaEva o) {
-		// TODO Auto-generated method stub
-		
+	public void save(AsignaEva ae) {
+		aeDao.save(ae);	
 	}
 
 	@Override
-	public void update(AsignaEva o) {
-		// TODO Auto-generated method stub
-		
+	public void update(AsignaEva ae) {
+		aeDao.update(ae);
 	}
 
 	@Override
 	public void deleteById(Long id) {
-		// TODO Auto-generated method stub
-		
+		aeDao.deleteById(id);
 	}
 
 	@Override
 	public AsignaEva findById(Long id) {
-		// TODO Auto-generated method stub
-		return null;
+		return aeDao.findById(id);
 	}
 
 	@Override
 	public List<AsignaEva> findAll() {
-		// TODO Auto-generated method stub
-		return null;
+		return aeDao.findAll();
 	}
 
 }

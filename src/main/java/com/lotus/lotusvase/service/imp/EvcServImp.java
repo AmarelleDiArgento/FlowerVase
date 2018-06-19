@@ -18,33 +18,28 @@ public class EvcServImp implements EvcServ{
 	@Autowired
 	private EvaluacionDao eDao;
 	@Override
-	public void save(Evaluacion o) {
-		// TODO Auto-generated method stub
-		
+	public void save(Evaluacion e) {
+		eDao.save(e);
 	}
 
 	@Override
-	public void update(Evaluacion o) {
-		// TODO Auto-generated method stub
-		
+	public void update(Evaluacion e) {
+		eDao.update(e);
 	}
 
 	@Override
 	public void deleteById(Long id) {
-		// TODO Auto-generated method stub
-		
+		eDao.deleteById(id);;
 	}
 
 	@Override
 	public Evaluacion findById(Long id) {
-		// TODO Auto-generated method stub
-		return null;
+		return eDao.findById(id);
 	}
 
 	@Override
 	public List<Evaluacion> findAll() {
-		// TODO Auto-generated method stub
-		return null;
+		return eDao.findAll();
 	}
 
 }

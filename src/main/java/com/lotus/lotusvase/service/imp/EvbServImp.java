@@ -18,33 +18,28 @@ public class EvbServImp implements EvbServ {
 	@Autowired
 	private EvaluablesDao eDao;
 	@Override
-	public void save(Evaluables o) {
-		// TODO Auto-generated method stub
-		
+	public void save(Evaluables e) {
+		eDao.save(e);
 	}
 
 	@Override
-	public void update(Evaluables o) {
-		// TODO Auto-generated method stub
-		
+	public void update(Evaluables e) {
+		eDao.update(e);	
 	}
 
 	@Override
 	public void deleteById(Long id) {
-		// TODO Auto-generated method stub
-		
+		eDao.deleteById(id);
 	}
 
 	@Override
 	public Evaluables findById(Long id) {
-		// TODO Auto-generated method stub
-		return null;
+		return eDao.findById(id);
 	}
 
 	@Override
 	public List<Evaluables> findAll() {
-		// TODO Auto-generated method stub
-		return null;
+		return eDao.findAll();
 	}
 
 }

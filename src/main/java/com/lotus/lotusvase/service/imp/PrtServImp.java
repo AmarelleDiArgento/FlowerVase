@@ -18,33 +18,29 @@ public class PrtServImp implements PrtServ{
 	@Autowired
 	private ParteDao pDao;
 	@Override
-	public void save(Parte o) {
-		// TODO Auto-generated method stub
-		
+	public void save(Parte p) {
+pDao.save(p);
 	}
 
 	@Override
-	public void update(Parte o) {
-		// TODO Auto-generated method stub
-		
+	public void update(Parte p) {
+		pDao.update(p);
 	}
+
 
 	@Override
 	public void deleteById(Long id) {
-		// TODO Auto-generated method stub
-		
+		pDao.deleteById(id);
 	}
 
 	@Override
 	public Parte findById(Long id) {
-		// TODO Auto-generated method stub
-		return null;
+		return pDao.findById(id);
 	}
 
 	@Override
 	public List<Parte> findAll() {
-		// TODO Auto-generated method stub
-		return null;
+		return pDao.findAll();
 	}
 
 }

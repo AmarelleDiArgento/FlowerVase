@@ -14,37 +14,33 @@ import com.lotus.lotusvase.service.interfaces.PtoServ;
 @Service("ptoServ")
 @Transactional
 
-public class PtoServImp implements PtoServ{
+public class PtoServImp implements PtoServ {
 	@Autowired
 	private ProductoDao pDao;
+
 	@Override
-	public void save(Producto o) {
-		// TODO Auto-generated method stub
-		
+	public void save(Producto p) {
+		pDao.save(p);
 	}
 
 	@Override
-	public void update(Producto o) {
-		// TODO Auto-generated method stub
-		
+	public void update(Producto p) {
+		pDao.update(p);
 	}
 
 	@Override
 	public void deleteById(Long id) {
-		// TODO Auto-generated method stub
-		
+		pDao.deleteById(id);
 	}
 
 	@Override
 	public Producto findById(Long id) {
-		// TODO Auto-generated method stub
-		return null;
+		return pDao.findById(id);
 	}
 
 	@Override
 	public List<Producto> findAll() {
-		// TODO Auto-generated method stub
-		return null;
+		return pDao.findAll();
 	}
 
 }

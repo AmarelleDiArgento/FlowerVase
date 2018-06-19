@@ -14,38 +14,33 @@ import com.lotus.lotusvase.service.interfaces.RamServ;
 @Service("ramServ")
 @Transactional
 
-public class RamServImp implements RamServ{
+public class RamServImp implements RamServ {
 	@Autowired
 	private RamoDao rDao;
 
 	@Override
-	public void save(Ramo o) {
-		// TODO Auto-generated method stub
-		
+	public void save(Ramo r) {
+		rDao.save(r);
 	}
 
 	@Override
-	public void update(Ramo o) {
-		// TODO Auto-generated method stub
-		
+	public void update(Ramo r) {
+		rDao.update(r);
 	}
 
 	@Override
 	public void deleteById(Long id) {
-		// TODO Auto-generated method stub
-		
+		rDao.deleteById(id);
 	}
 
 	@Override
 	public Ramo findById(Long id) {
-		// TODO Auto-generated method stub
-		return null;
+		return rDao.findById(id);
 	}
 
 	@Override
 	public List<Ramo> findAll() {
-		// TODO Auto-generated method stub
-		return null;
+		return rDao.findAll();
 	}
 
 }

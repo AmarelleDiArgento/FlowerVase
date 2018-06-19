@@ -18,33 +18,28 @@ public class ImaServImp implements ImaServ {
 	@Autowired
 	private ImagenDao iDao;
 	@Override
-	public void save(Imagen o) {
-		// TODO Auto-generated method stub
-		
+	public void save(Imagen i) {
+		iDao.save(i);	
 	}
 
 	@Override
-	public void update(Imagen o) {
-		// TODO Auto-generated method stub
-		
+	public void update(Imagen i) {
+		iDao.update(i);	
 	}
 
 	@Override
 	public void deleteById(Long id) {
-		// TODO Auto-generated method stub
-		
+		iDao.deleteById(id);
 	}
 
 	@Override
 	public Imagen findById(Long id) {
-		// TODO Auto-generated method stub
-		return null;
+		return iDao.findById(id);
 	}
 
 	@Override
 	public List<Imagen> findAll() {
-		// TODO Auto-generated method stub
-		return null;
+		return iDao.findAll();
 	}
 
 }

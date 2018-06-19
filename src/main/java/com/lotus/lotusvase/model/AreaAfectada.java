@@ -12,9 +12,11 @@ import javax.persistence.Table;
 @Entity
 @Table(name = "areaAfectada")
 public class AreaAfectada implements Serializable{
-	
+
+	@Id
 	@Column(name = "lecId")
 	private Long lecId;
+	@Id
 	@Column(name = "afeId")
 	private Long afeId;
 	@Column(name = "eliminado")

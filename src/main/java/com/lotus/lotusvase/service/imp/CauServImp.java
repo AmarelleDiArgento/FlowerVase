@@ -18,33 +18,28 @@ public class CauServImp implements CauServ {
 	@Autowired
 	private CausaDao cDao;
 	@Override
-	public void save(Causa o) {
-		// TODO Auto-generated method stub
-		
+	public void save(Causa c) {
+		cDao.save(c);
 	}
 
 	@Override
-	public void update(Causa o) {
-		// TODO Auto-generated method stub
-		
+	public void update(Causa c) {
+		cDao.update(c);	
 	}
 
 	@Override
 	public void deleteById(Long id) {
-		// TODO Auto-generated method stub
-		
+		cDao.deleteById(id);
 	}
 
 	@Override
 	public Causa findById(Long id) {
-		// TODO Auto-generated method stub
-		return null;
+		return cDao.findById(id);
 	}
 
 	@Override
 	public List<Causa> findAll() {
-		// TODO Auto-generated method stub
-		return null;
+		return cDao.findAll();
 	}
 
 }

@@ -18,33 +18,27 @@ public class TiProServÍmp implements TiProServ{
 	@Autowired
 	private TipoProveedorDao tpDao;
 	@Override
-	public void save(TipoProveedor o) {
-		// TODO Auto-generated method stub
+	public void save(TipoProveedor tp) {
+		tpDao.save(tp);
 		
 	}
 
 	@Override
-	public void update(TipoProveedor o) {
-		// TODO Auto-generated method stub
-		
-	}
+	public void update(TipoProveedor tp) {
+tpDao.update(tp);}
 
 	@Override
 	public void deleteById(Long id) {
-		// TODO Auto-generated method stub
-		
-	}
+		tpDao.deleteById(id);}
 
 	@Override
 	public TipoProveedor findById(Long id) {
-		// TODO Auto-generated method stub
-		return null;
+		return tpDao.findById(id);
 	}
 
 	@Override
 	public List<TipoProveedor> findAll() {
-		// TODO Auto-generated method stub
-		return null;
+		return tpDao.findAll();
 	}
 
 }

@@ -18,33 +18,28 @@ public class AsCarServImp implements AsCarServ{
 	@Autowired
 	private AsignaCarDao acDao;
 	@Override
-	public void save(AsignaCar o) {
-		// TODO Auto-generated method stub
-		
+	public void save(AsignaCar ac) {
+		acDao.save(ac);
 	}
 
 	@Override
-	public void update(AsignaCar o) {
-		// TODO Auto-generated method stub
-		
+	public void update(AsignaCar ac) {
+		acDao.update(ac);
 	}
 
 	@Override
 	public void deleteById(Long id) {
-		// TODO Auto-generated method stub
-		
+		acDao.deleteById(id);
 	}
 
 	@Override
 	public AsignaCar findById(Long id) {
-		// TODO Auto-generated method stub
-		return null;
+		return acDao.findById(id);
 	}
 
 	@Override
 	public List<AsignaCar> findAll() {
-		// TODO Auto-generated method stub
-		return null;
+		return acDao.findAll();
 	}
 
 }

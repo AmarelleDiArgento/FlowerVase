@@ -18,33 +18,28 @@ public class AsTraServImp implements AsTraServ{
 	@Autowired
 	private AsignaTraDao atDao;
 	@Override
-	public void save(AsignaTra o) {
-		// TODO Auto-generated method stub
-		
+	public void save(AsignaTra at) {
+		atDao.save(at);
 	}
 
 	@Override
-	public void update(AsignaTra o) {
-		// TODO Auto-generated method stub
-		
+	public void update(AsignaTra at) {
+		atDao.update(at);
 	}
 
 	@Override
 	public void deleteById(Long id) {
-		// TODO Auto-generated method stub
-		
+		atDao.deleteById(id);
 	}
 
 	@Override
 	public AsignaTra findById(Long id) {
-		// TODO Auto-generated method stub
-		return null;
+		return atDao.findById(id);
 	}
 
 	@Override
 	public List<AsignaTra> findAll() {
-		// TODO Auto-generated method stub
-		return null;
+		return atDao.findAll();
 	}
 
 }

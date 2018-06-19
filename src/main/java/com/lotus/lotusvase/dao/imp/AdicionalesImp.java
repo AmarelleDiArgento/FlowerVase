@@ -18,13 +18,13 @@ public class AdicionalesImp extends SessionAbs implements AdicionalesDao {
 	public void save(Adicionales a) {
 
 		getSession().persist(a);
-		
+
 	}
 
 	@Override
 	public void update(Adicionales a) {
 		getSession().update(a);
-		
+
 	}
 
 	@Override
@@ -33,7 +33,7 @@ public class AdicionalesImp extends SessionAbs implements AdicionalesDao {
 		if (a != null) {
 			getSession().delete(a);
 		}
-		
+
 	}
 
 	@Override
@@ -45,5 +45,4 @@ public class AdicionalesImp extends SessionAbs implements AdicionalesDao {
 	public List<Adicionales> findAll() {
 		return getSession().createQuery("from Adicionales").list();
 	}
-
 }

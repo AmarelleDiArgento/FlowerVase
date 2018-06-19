@@ -18,33 +18,28 @@ public class AsRolServImp implements AsRolServ{
 	@Autowired
 	private AsignaRolDao arDao;
 	@Override
-	public void save(AsignaRol o) {
-		// TODO Auto-generated method stub
-		
+	public void save(AsignaRol ar) {
+		arDao.save(ar);
 	}
 
 	@Override
-	public void update(AsignaRol o) {
-		// TODO Auto-generated method stub
-		
+	public void update(AsignaRol ar) {
+		arDao.update(ar);
 	}
 
 	@Override
 	public void deleteById(Long id) {
-		// TODO Auto-generated method stub
-		
+		arDao.deleteById(id);
 	}
 
 	@Override
 	public AsignaRol findById(Long id) {
-		// TODO Auto-generated method stub
-		return null;
+		return arDao.findById(id);
 	}
 
 	@Override
 	public List<AsignaRol> findAll() {
-		// TODO Auto-generated method stub
-		return null;
+		return arDao.findAll();
 	}
 
 }

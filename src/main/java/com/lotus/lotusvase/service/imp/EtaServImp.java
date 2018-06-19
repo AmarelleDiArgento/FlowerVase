@@ -18,33 +18,28 @@ public class EtaServImp implements EtaServ{
 	@Autowired
 	private EtapaDao eDao;
 	@Override
-	public void save(Etapa o) {
-		// TODO Auto-generated method stub
-		
+	public void save(Etapa e) {
+		eDao.save(e);
 	}
 
 	@Override
-	public void update(Etapa o) {
-		// TODO Auto-generated method stub
-		
+	public void update(Etapa e) {
+		eDao.update(e);	
 	}
 
 	@Override
 	public void deleteById(Long id) {
-		// TODO Auto-generated method stub
-		
+		eDao.deleteById(id);
 	}
 
 	@Override
 	public Etapa findById(Long id) {
-		// TODO Auto-generated method stub
-		return null;
+		return eDao.findById(id);
 	}
 
 	@Override
 	public List<Etapa> findAll() {
-		// TODO Auto-generated method stub
-		return null;
+		return eDao.findAll();
 	}
 
 }

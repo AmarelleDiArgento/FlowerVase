@@ -14,37 +14,33 @@ import com.lotus.lotusvase.service.interfaces.LecServ;
 @Service("lecServ")
 @Transactional
 
-public class LecServImp implements LecServ{
+public class LecServImp implements LecServ {
 	@Autowired
 	private LecturaDao lDao;
+
 	@Override
-	public void save(Lectura o) {
-		// TODO Auto-generated method stub
-		
+	public void save(Lectura l) {
+		lDao.save(l);
 	}
 
 	@Override
-	public void update(Lectura o) {
-		// TODO Auto-generated method stub
-		
+	public void update(Lectura l) {
+		lDao.update(l);
 	}
 
 	@Override
 	public void deleteById(Long id) {
-		// TODO Auto-generated method stub
-		
+		lDao.deleteById(id);
 	}
 
 	@Override
 	public Lectura findById(Long id) {
-		// TODO Auto-generated method stub
-		return null;
+		return lDao.findById(id);
 	}
 
 	@Override
 	public List<Lectura> findAll() {
-		// TODO Auto-generated method stub
-		return null;
+		return lDao.findAll();
 	}
 
 }

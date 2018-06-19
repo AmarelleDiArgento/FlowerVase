@@ -18,33 +18,28 @@ public class CnfServImp implements CnfServ{
 	@Autowired
 	private ConformadoDao cDao;
 	@Override
-	public void save(Conformado o) {
-		// TODO Auto-generated method stub
-		
+	public void save(Conformado c) {
+		cDao.save(c);
 	}
 
 	@Override
-	public void update(Conformado o) {
-		// TODO Auto-generated method stub
-		
+	public void update(Conformado c) {
+		cDao.update(c);	
 	}
 
 	@Override
 	public void deleteById(Long id) {
-		// TODO Auto-generated method stub
-		
+		cDao.deleteById(id);	
 	}
 
 	@Override
 	public Conformado findById(Long id) {
-		// TODO Auto-generated method stub
-		return null;
+		return cDao.findById(id);
 	}
 
 	@Override
 	public List<Conformado> findAll() {
-		// TODO Auto-generated method stub
-		return null;
+		return cDao.findAll();
 	}
 
 }

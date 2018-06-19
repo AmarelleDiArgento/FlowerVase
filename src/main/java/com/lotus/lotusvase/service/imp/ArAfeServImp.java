@@ -10,7 +10,7 @@ import com.lotus.lotusvase.dao.interfaces.AreaAfectadaDao;
 import com.lotus.lotusvase.model.AreaAfectada;
 import com.lotus.lotusvase.service.interfaces.ArAfeServ;
 
-@Service("arServ")
+@Service("araServ")
 @Transactional
 
 public class ArAfeServImp implements ArAfeServ {
@@ -18,32 +18,27 @@ public class ArAfeServImp implements ArAfeServ {
 
 	@Override
 	public void save(AreaAfectada ar) {
-		// TODO Auto-generated method stub
-
+		arDao.save(ar);
 	}
 
 	@Override
 	public void update(AreaAfectada ar) {
-		// TODO Auto-generated method stub
-
+		arDao.update(ar);
 	}
 
 	@Override
 	public void deleteById(Long id) {
-		// TODO Auto-generated method stub
-
+		arDao.deleteById(id);
 	}
 
 	@Override
 	public AreaAfectada findById(Long id) {
-		// TODO Auto-generated method stub
-		return null;
+		return arDao.findById(id);
 	}
 
 	@Override
 	public List<AreaAfectada> findAll() {
-		// TODO Auto-generated method stub
-		return null;
+		return arDao.findAll();
 	}
 
 }

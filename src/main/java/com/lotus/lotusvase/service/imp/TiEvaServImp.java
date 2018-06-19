@@ -14,37 +14,33 @@ import com.lotus.lotusvase.service.interfaces.TiEvaServ;
 @Service("teServ")
 @Transactional
 
-public class TiEvaServImp implements TiEvaServ{
+public class TiEvaServImp implements TiEvaServ {
 	@Autowired
-	private TipoEvaluacionDao tpDao;
+	private TipoEvaluacionDao teDao;
+
 	@Override
-	public void save(TipoEvaluacion o) {
-		// TODO Auto-generated method stub
-		
+	public void save(TipoEvaluacion te) {
+		teDao.save(te);
 	}
 
 	@Override
-	public void update(TipoEvaluacion o) {
-		// TODO Auto-generated method stub
-		
+	public void update(TipoEvaluacion te) {
+		teDao.update(te);
 	}
 
 	@Override
 	public void deleteById(Long id) {
-		// TODO Auto-generated method stub
-		
+		teDao.deleteById(id);
 	}
 
 	@Override
 	public TipoEvaluacion findById(Long id) {
-		// TODO Auto-generated method stub
-		return null;
+		return teDao.findById(id);
 	}
 
 	@Override
 	public List<TipoEvaluacion> findAll() {
-		// TODO Auto-generated method stub
-		return null;
+		return teDao.findAll();
 	}
 
 }

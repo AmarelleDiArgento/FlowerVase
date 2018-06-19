@@ -14,31 +14,28 @@ import com.lotus.lotusvase.service.interfaces.SimServ;
 @Service("simServ")
 @Transactional
 
-public class SimServImp implements SimServ{
+public class SimServImp implements SimServ {
 	@Autowired
 	private SimulacionDao sDao;
+
 	@Override
-	public void save(Simulacion o) {
-		// TODO Auto-generated method stub
-		
+	public void save(Simulacion s) {
+		sDao.save(s);
 	}
 
 	@Override
-	public void update(Simulacion o) {
-		// TODO Auto-generated method stub
-		
+	public void update(Simulacion s) {
+		sDao.update(s);
 	}
 
 	@Override
 	public void deleteById(Long id) {
-		// TODO Auto-generated method stub
-		
+		sDao.deleteById(id);
 	}
 
 	@Override
 	public Simulacion findById(Long id) {
-		// TODO Auto-generated method stub
-		return null;
+		return sDao.findById(id);
 	}
 
 	@Override

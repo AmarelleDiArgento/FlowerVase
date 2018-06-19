@@ -7,6 +7,7 @@ import javax.transaction.Transactional;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import com.lotus.lotusvase.dao.interfaces.PermisoDao;
 import com.lotus.lotusvase.model.Permiso;
 import com.lotus.lotusvase.service.interfaces.PerServ;
 
@@ -15,35 +16,31 @@ import com.lotus.lotusvase.service.interfaces.PerServ;
 
 public class PerServImp implements PerServ {
 	@Autowired
-	private Permiso pDao;
+	private PermisoDao pDao;
 	@Override
-	public void save(Permiso o) {
-		// TODO Auto-generated method stub
-		
+	public void save(Permiso p) {
+pDao.save(p);
 	}
 
 	@Override
-	public void update(Permiso o) {
-		// TODO Auto-generated method stub
-		
+	public void update(Permiso p) {
+		pDao.update(p);
 	}
+
 
 	@Override
 	public void deleteById(Long id) {
-		// TODO Auto-generated method stub
-		
+		pDao.deleteById(id);
 	}
 
 	@Override
 	public Permiso findById(Long id) {
-		// TODO Auto-generated method stub
-		return null;
+		return pDao.findById(id);
 	}
 
 	@Override
 	public List<Permiso> findAll() {
-		// TODO Auto-generated method stub
-		return null;
+		return pDao.findAll();
 	}
 
 }

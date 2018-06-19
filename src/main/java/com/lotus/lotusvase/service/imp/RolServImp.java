@@ -16,35 +16,30 @@ import com.lotus.lotusvase.service.interfaces.RolServ;
 
 public class RolServImp implements RolServ{
 	@Autowired
-	private RolDao rDAo;
+	private RolDao rDao;
 	@Override
-	public void save(Rol o) {
-		// TODO Auto-generated method stub
-		
+	public void save(Rol r) {
+		rDao.save(r);
 	}
 
 	@Override
-	public void update(Rol o) {
-		// TODO Auto-generated method stub
-		
+	public void update(Rol r) {
+		rDao.update(r);
 	}
 
 	@Override
 	public void deleteById(Long id) {
-		// TODO Auto-generated method stub
-		
+		rDao.deleteById(id);
 	}
 
 	@Override
 	public Rol findById(Long id) {
-		// TODO Auto-generated method stub
-		return null;
+		return rDao.findById(id);
 	}
 
 	@Override
 	public List<Rol> findAll() {
-		// TODO Auto-generated method stub
-		return null;
+		return rDao.findAll();
 	}
 
 }

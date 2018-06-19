@@ -4,14 +4,16 @@ import java.io.Serializable;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.Id;
 import javax.persistence.Table;
 
 @Entity
 @Table(name="adicionales")
 public class Adicionales implements Serializable{
-	
+	@Id
 	@Column(name="carId")
 	private Long carId;
+	@Id
 	@Column(name="lecId")
 	private Long lecId;
 	@Column(name="valor")

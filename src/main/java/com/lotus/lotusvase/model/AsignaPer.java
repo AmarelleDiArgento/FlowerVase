@@ -4,13 +4,16 @@ import java.io.Serializable;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.Id;
 import javax.persistence.Table;
 
 @Entity
 @Table(name="asignaPer")
 public class AsignaPer implements Serializable{
+	@Id
 	@Column(name="rolId")
 	private Long rolId;
+	@Id
 	@Column(name="perId")
 	private Long perId;
 	@Column(name="leer")

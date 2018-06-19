@@ -18,33 +18,28 @@ public class NotServImp implements NotServ {
 	@Autowired
 	private NotaDao nDao;
 	@Override
-	public void save(Nota o) {
-		// TODO Auto-generated method stub
-		
+	public void save(Nota n) {
+		nDao.save(n);	
 	}
 
 	@Override
-	public void update(Nota o) {
-		// TODO Auto-generated method stub
-		
+	public void update(Nota n) {
+		nDao.update(n);		
 	}
 
 	@Override
 	public void deleteById(Long id) {
-		// TODO Auto-generated method stub
-		
+		nDao.deleteById(id);		
 	}
 
 	@Override
 	public Nota findById(Long id) {
-		// TODO Auto-generated method stub
-		return null;
+		return nDao.findById(id);
 	}
 
 	@Override
 	public List<Nota> findAll() {
-		// TODO Auto-generated method stub
-		return null;
+		return nDao.findAll();
 	}
 
 }

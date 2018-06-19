@@ -20,32 +20,27 @@ public class AdiServImp implements  AdiServ{
 
 	@Override
 	public void save(Adicionales a) {
-		// TODO Auto-generated method stub
-		
+		aDao.save(a);
 	}
 
 	@Override
 	public void update(Adicionales a) {
-		// TODO Auto-generated method stub
-		
+		aDao.update(a);
 	}
 
 	@Override
 	public void deleteById(Long id) {
-		// TODO Auto-generated method stub
-		
+		aDao.deleteById(id);
 	}
 
 	@Override
 	public Adicionales findById(Long id) {
-		// TODO Auto-generated method stub
-		return null;
+		return aDao.findById(id);
 	}
 
 	@Override
 	public List<Adicionales> findAll() {
-		// TODO Auto-generated method stub
-		return null;
+		return aDao.findAll();
 	}
 
 }
